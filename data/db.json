@@ -1,0 +1,211 @@
+{
+  "users": [
+    {
+      "id": "user_demo_student_01",
+      "name": "Alex Chen",
+      "email": "demo@student.edu",
+      "college": "Institute of Technology",
+      "degree": "B.Tech in Computer Science",
+      "graduationYear": "2025",
+      "createdAt": "2026-09-05T04:40:52.947Z",
+      "passwordHash": "048ec915a7808c9e3b44c4800a1b14c4bbfeb9a62a4514d8aa3172b15c606fede51e8817d0a8d582c69a6aa8087c1ce0acd47c4910e0c39aaf3044d870388997",
+      "salt": "39d2ed67e90a9b17c7fd449a223d3ce4",
+      "token": "demo-token-123456789"
+    }
+  ],
+  "savedProjects": {
+    "user_demo_student_01": [
+      {
+        "id": "proj_mediscan_ai_sample",
+        "title": "MediScan AI: Multimodal Clinical Summarization & Diagnostic Assist",
+        "tagline": "End-to-end clinical workflow assistant for analyzing EHR records and chest radiography with explainable heatmaps",
+        "domain": "Artificial Intelligence & Healthcare",
+        "difficulty": "Intermediate",
+        "estimatedTime": "12 - 16 weeks",
+        "problemStatement": "Doctors and hospital residents face diagnostic burnout when manually reviewing multi-page unstructured electronic health records (EHR) alongside medical imaging. An accessible AI copilot that cross-references radiological findings with patient lab histories can drastically shorten triage response times.",
+        "keyFeatures": [
+          "Automated Clinical Note Summarization: Extracts chief complaints, active medications, and contraindications into structured SOAP notes.",
+          "Chest X-Ray Pathology Screening: Detects Cardiomegaly, Pneumothorax, and Consolidation with Grad-CAM visual attention overlays.",
+          "Interactive Medical Q&A: Doctor can query patient lab metrics and clinical guidelines in natural language.",
+          "FHIR-Compliant Data Ingestion: Accepts synthetic patient records in standard HL7/FHIR JSON format.",
+          "Privacy-Preserving Local Inference option for sensitive health data."
+        ],
+        "recommendedTechStack": {
+          "frontend": [
+            "React 19",
+            "Tailwind CSS",
+            "Lucide React",
+            "Canvas/DICOM Viewer"
+          ],
+          "backend": [
+            "FastAPI (Python)",
+            "Express / Node.js API Gateway"
+          ],
+          "database": [
+            "PostgreSQL / SQLite",
+            "ChromaDB (Vector Database for Clinical Guidelines)"
+          ],
+          "aiMl": [
+            "Gemini 3.8 Flash (Summarization & Clinical Reasoning)",
+            "PyTorch TorchVision DenseNet-121 (Chest X-Ray Pretrained)",
+            "Grad-CAM"
+          ],
+          "devOps": [
+            "Docker",
+            "Hugging Face Spaces / Google Cloud Run"
+          ]
+        },
+        "developmentRoadmap": [
+          {
+            "phase": "Phase 1: Requirements & Dataset Prep",
+            "duration": "Weeks 1-3",
+            "milestones": [
+              "Literature review on clinical summarization",
+              "Download & preprocess NIH ChestX-ray8 & MIMIC-III synthetic subset",
+              "Define system architecture & FHIR schema"
+            ],
+            "deliverables": [
+              "System Requirements Specification (SRS)",
+              "Preprocessed image and text dataset pipeline"
+            ]
+          },
+          {
+            "phase": "Phase 2: Core ML Pipeline & API",
+            "duration": "Weeks 4-7",
+            "milestones": [
+              "Fine-tune/Prompt DenseNet-121 on thoracic pathologies",
+              "Implement Grad-CAM explainability heatmap generator",
+              "Build FastAPI REST endpoints for inference"
+            ],
+            "deliverables": [
+              "Functional AI Inference Service with >88% AUROC baseline",
+              "API documentation with Swagger"
+            ]
+          },
+          {
+            "phase": "Phase 3: Web Dashboard & EHR Integration",
+            "duration": "Weeks 8-11",
+            "milestones": [
+              "Design responsive radiologist workbench in React",
+              "Implement interactive heatmaps and PDF clinical report exporter",
+              "Conduct latency and error handling stress tests"
+            ],
+            "deliverables": [
+              "Complete interactive UI connected to backend API",
+              "Exportable clinical summary report"
+            ]
+          },
+          {
+            "phase": "Phase 4: Academic Evaluation & Viva Defense",
+            "duration": "Weeks 12-14",
+            "milestones": [
+              "Evaluate with Clinical F1, ROUGE-L, and User Study survey",
+              "Draft final-year project dissertation report",
+              "Prepare slide deck and viva rehearsal"
+            ],
+            "deliverables": [
+              "Comprehensive Final Dissertation (Chapters 1-7)",
+              "Demonstration video and slide deck"
+            ]
+          }
+        ],
+        "aiMlIntegration": {
+          "overview": "Combines computer vision classification for radiograph anomaly detection with generative clinical LLM reasoning for patient history reconciliation.",
+          "algorithmsOrModels": [
+            "DenseNet-121 CNN for multi-label chest radiography classification",
+            "Gemini 3.8 Flash for zero-shot clinical narrative extraction",
+            "Grad-CAM for Class Activation Mapping"
+          ],
+          "datasetSuggestions": [
+            "NIH ChestX-ray14 (NIH Clinical Center)",
+            "MIMIC-CXR-JPG (PhysioNet open synthetic samples)",
+            "PubMed Central Open Access Articles"
+          ],
+          "evaluationMetrics": [
+            "Area Under ROC Curve (AUROC)",
+            "ROUGE-1, ROUGE-2, ROUGE-L for narrative summaries",
+            "Inference Latency (< 1.5s per radiograph)"
+          ]
+        },
+        "futureImprovements": [
+          "Federated Learning support to train across multiple hospital nodes without sharing raw patient data.",
+          "DICOM 3D volumetric CT scan support.",
+          "Multi-lingual patient summary translation for regional languages."
+        ],
+        "academicEvaluationTips": [
+          "Examiners love explainability: highlight your Grad-CAM heatmaps so the AI is not a black-box.",
+          "Emphasize ethical considerations: explain HIPAA/GDPR mock compliance and safety disclaimers.",
+          "Have a live benchmark comparison table (e.g. ResNet vs DenseNet performance) in your slides."
+        ],
+        "vivaDefenseQuestions": [
+          {
+            "question": "Why did you select DenseNet-121 over standard ResNet-50 for chest radiograph classification?",
+            "sampleAnswerHint": "DenseNet connects all layers directly, promoting feature reuse and gradient flow while requiring fewer parameters, which reduces overfitting on medical datasets with high visual redundancy."
+          },
+          {
+            "question": "How do you prevent hallucination in the clinical note summary?",
+            "sampleAnswerHint": "We constrain the LLM via strict retrieval-grounded prompts, provide strict schema constraints, and append verbatim source citations from the original EHR text."
+          },
+          {
+            "question": "What metric did you prioritize and why?",
+            "sampleAnswerHint": "In clinical screening, false negatives are catastrophic, so we prioritized Sensitivity/Recall and AUROC over raw accuracy to capture true pathology cases."
+          }
+        ],
+        "savedAt": "2026-09-05T04:40:52.947Z",
+        "status": "selected",
+        "studentNotes": "Selected as team final year project! Advisor approved the scope and suggested focusing on Grad-CAM explainability."
+      }
+    ]
+  },
+  "chatHistories": {
+    "user_demo_student_01_general": [
+      {
+        "id": "msg_1788583257599_u",
+        "role": "user",
+        "content": "What are 2 good tips for presenting this project to external examiners?",
+        "timestamp": "2026-09-05T04:40:57.599Z"
+      },
+      {
+        "id": "msg_1788583259700_a",
+        "role": "assistant",
+        "content": "Hello! I've reviewed your question regarding **your final-year project**.\n\nHere is my recommended academic and engineering strategy:\n\n### 1. Architectural Clarity\nEnsure your system exhibits a distinct separation of concerns:\n- **Presentation Layer**: Responsive client with clear state boundaries.\n- **Service & Inference Layer**: Decouple long-running AI or analytical pipelines into asynchronous worker queues or dedicated microservices to prevent HTTP request timeouts.\n- **Persistence Layer**: Utilize relational integrity for critical schemas (users, project records, audit logs) and specialized stores (vector databases or time-series) only where technically justified.\n\n### 2. Viva Voce / Defense Preparation\nExternal examiners will inevitably probe three core dimensions:\n1. **\"Why this stack over the standard alternative?\"** Always answer in terms of benchmarks, memory/computational footprint, and developer velocity rather than subjective preference.\n2. **\"What happens when the model makes a critical error?\"** Highlight your system's fallback mechanisms, confidence score thresholds, and graceful degradation paths.\n3. **\"How did you validate your claims?\"** Make sure you have baseline comparisons (e.g. comparing against a traditional heuristic or naive model) rather than presenting isolated accuracy numbers.\n\n### 3. Next Deliverable Focus\nMake sure your **Software Requirements Specification (SRS)** and **System Architecture Diagram** are locked in before writing extensive code.\n\nLet me know which specific area you would like to drill down into next!",
+        "timestamp": "2026-09-05T04:40:59.700Z",
+        "suggestedActions": [
+          "Draft sample Viva Voce defense questions & answers",
+          "Generate a system architecture & database schema outline",
+          "Help write the Problem Statement for my report"
+        ]
+      }
+    ],
+    "user_demo_student_01_proj_mediscan_ai_sample": [
+      {
+        "id": "msg_u_1788586614182",
+        "role": "user",
+        "content": "What are 2 critical questions an external viva examiner will ask about this MediScan project?",
+        "timestamp": "2026-09-05T05:36:54.182Z",
+        "projectId": "proj_mediscan_ai_sample"
+      },
+      {
+        "id": "msg_a_1788586619254",
+        "role": "assistant",
+        "content": "Hello! I've reviewed your question regarding **MediScan AI**.\n\nHere is my recommended academic and engineering strategy:\n\n### 1. Architectural Clarity\nEnsure your system exhibits a distinct separation of concerns:\n- **Presentation Layer**: Responsive client with clear state boundaries.\n- **Service & Inference Layer**: Decouple long-running AI or analytical pipelines into asynchronous worker queues or dedicated microservices to prevent HTTP request timeouts.\n- **Persistence Layer**: Utilize relational integrity for critical schemas (users, project records, audit logs) and specialized stores (vector databases or time-series) only where technically justified.\n\n### 2. Viva Voce / Defense Preparation\nExternal examiners will inevitably probe three core dimensions:\n1. **\"Why this stack over the standard alternative?\"** Always answer in terms of benchmarks, memory/computational footprint, and developer velocity rather than subjective preference.\n2. **\"What happens when the model makes a critical error?\"** Highlight your system's fallback mechanisms, confidence score thresholds, and graceful degradation paths.\n3. **\"How did you validate your claims?\"** Make sure you have baseline comparisons (e.g. comparing against a traditional heuristic or naive model) rather than presenting isolated accuracy numbers.\n\n### 3. Next Deliverable Focus\nMake sure your **Software Requirements Specification (SRS)** and **System Architecture Diagram** are locked in before writing extensive code.\n\nLet me know which specific area you would like to drill down into next!",
+        "timestamp": "2026-09-05T05:36:59.254Z",
+        "projectId": "proj_mediscan_ai_sample",
+        "suggestedActions": [
+          "Draft sample Viva Voce defense questions & answers",
+          "Generate a system architecture & database schema outline",
+          "Help write the Problem Statement for my report"
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "user_demo_student_01": {
+      "projectsGenerated": 5,
+      "projectsSaved": 1,
+      "activeProjectTitle": "MediScan AI: Multimodal Clinical Summarization & Diagnostic Assist",
+      "mentorQueriesCount": 5,
+      "selectedDomain": "Artificial Intelligence & Healthcare"
+    }
+  }
+}

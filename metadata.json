@@ -1,0 +1,6 @@
+{
+  "name": "AI Project Idea Generator & Mentor",
+  "description": "A modern full-stack AI project idea generator, roadmap planner, and interactive mentor for final-year engineering and computer science students.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

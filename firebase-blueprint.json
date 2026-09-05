@@ -1,0 +1,79 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Student scholar profile and authentication record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique user ID" },
+        "name": { "type": "string", "description": "Full name of student" },
+        "email": { "type": "string", "format": "email", "description": "Student email" },
+        "college": { "type": "string", "description": "University or college name" },
+        "degree": { "type": "string", "description": "Degree and major" },
+        "graduationYear": { "type": "string", "description": "Target graduation year" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "ISO timestamp of account creation" }
+      },
+      "required": ["id", "name", "email", "createdAt"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "AI-generated capstone project blueprint and specifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique project identifier" },
+        "title": { "type": "string", "description": "Academic title of the project" },
+        "tagline": { "type": "string", "description": "One-line thesis summary" },
+        "domain": { "type": "string", "description": "Engineering discipline / domain" },
+        "difficulty": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced"], "description": "Difficulty rating" },
+        "estimatedTime": { "type": "string", "description": "Estimated semester duration" },
+        "problemStatement": { "type": "string", "description": "Comprehensive engineering problem description" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "ISO creation timestamp" }
+      },
+      "required": ["id", "title", "domain", "difficulty", "problemStatement"]
+    },
+    "SavedProject": {
+      "title": "SavedProject",
+      "description": "Candidate project bookmarked or adopted by a student",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique saved project record ID" },
+        "userId": { "type": "string", "description": "UID of the student who saved this project" },
+        "projectId": { "type": "string", "description": "Reference ID of the project blueprint" },
+        "status": { "type": "string", "enum": ["considering", "selected", "in-progress", "completed"], "description": "Review status" },
+        "notes": { "type": "string", "description": "Personal student notes or advisor remarks" },
+        "savedAt": { "type": "string", "format": "date-time", "description": "Timestamp when bookmarked" }
+      },
+      "required": ["id", "userId", "projectId", "status", "savedAt"]
+    },
+    "MentorChat": {
+      "title": "MentorChat",
+      "description": "Conversation transcript between student and AI Academic Mentor",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique chat session identifier" },
+        "userId": { "type": "string", "description": "UID of the student" },
+        "projectId": { "type": "string", "description": "Associated project ID, or 'general'" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last message timestamp" }
+      },
+      "required": ["id", "userId", "projectId", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents keyed by userId"
+    },
+    "/projects/{projectId}": {
+      "schema": "Project",
+      "description": "Global catalog of AI-synthesized capstone project blueprints"
+    },
+    "/savedProjects/{savedId}": {
+      "schema": "SavedProject",
+      "description": "Student saved capstone projects and tracking status"
+    },
+    "/mentorChats/{chatId}": {
+      "schema": "MentorChat",
+      "description": "AI Academic Mentor chat threads and discussion transcripts"
+    }
+  }
+}
